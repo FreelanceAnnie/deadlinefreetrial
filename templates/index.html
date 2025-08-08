@@ -428,22 +428,19 @@ function downloadCSV() {
   });
 }
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const hasUsedTrial = localStorage.getItem("usedTrial");
+  window.onload = function () {
+    const alreadyUsed = localStorage.getItem('usedFreeTrial');
 
-    if (hasUsedTrial === "true") {
-      // Already used trial → redirect to pricing page
-      window.location.href = "https://www.freelanceannieparalegal.com/pricing-plans/list";
-    }
-
-    const generateBtn = document.getElementById("generateButton");
-    if (generateBtn) {
-      generateBtn.addEventListener("click", function () {
-        // Mark as used after first click
-        localStorage.setItem("usedTrial", "true");
+    if (alreadyUsed === 'true') {
+      // Redirect to pricing page if already used
+      window.location.href = '/pricing-plans/list';
+    } else {
+      // Listen for the Generate button click
+      document.getElementById('generateButton').addEventListener('click', () => {
+        localStorage.setItem('usedFreeTrial', 'true');
       });
     }
-  });
+  };
 </script>
 
 </script>
